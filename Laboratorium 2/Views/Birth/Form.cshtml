@@ -3,23 +3,19 @@
 *@
 @{
 }
-<p>ViewBag.Form</p>
+<p>@ViewBag.Form</p>
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-6">
             <h2>Wiek</h2>
             <form action="Result" method="GET">
                 <div class="mb-3">
-                    <label class="form-label" for="x">Imie</label>
+                    <label class="form-label" for="Name">Imie</label>
                     <input class="form-control" type="text" name="x" step="0.00001" id="x" />
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="operator">Operator</label>
-                    <input class="form-control" type="text" name="operator" id="operator" />
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="y">Data</label>
-                    <input class="form-control" type="number" name="y" step="0.00001" id="y" />
+                    <label class="form-label" for="BirthDate">Wiek</label>
+                    <input class="form-control" type="date" name="y" step="0.00001" id="y" />
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Oblicz</button>
