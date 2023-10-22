@@ -9,21 +9,32 @@ namespace Laboratorium_2.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Form()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Result(Birth model)
+        public IActionResult Result([FromForm] Birth model)
         {
-            if (!model.IsValid)
+            if (ModelState.IsValid)
             {
-                return View("Error");
-                
+                if (model.IsValid())
+                {
+                    int age = model.CalculateAge();
+                   
+                    ViewBag.Age = age; 
+                    return View(model);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Formularz jest niepoprawny.");
+                }
             }
-            return View(model);
+            return View("Form", model); 
         }
-       
     }
+       
+    
 }

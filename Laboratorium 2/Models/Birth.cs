@@ -1,12 +1,15 @@
-﻿namespace Laboratorium_2.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Laboratorium_2.Models
 {
     public class Birth
     {
+        [Required(ErrorMessage = "Pole 'Imię' jest wymagane")]
         public string Name { get; set; }
         public DateTime BirthDate { get; set; }
         public bool IsValid()
         {
-            return ErrorEventArgs;
+            return !string.IsNullOrEmpty(Name) && BirthDate < DateTime.Now;
         }
 
         public int CalculateAge()
