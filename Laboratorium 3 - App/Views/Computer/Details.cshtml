@@ -1,0 +1,40 @@
+﻿@model Computer
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h2>Szczegóły Komputera</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Nazwa</dt>
+        <dd>@Model.Name</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>Procesor</dt>
+        <dd>@Model.Processor</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>Pamięć</dt>
+        <dd>@Model.Memory</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>Karta Graficzna</dt>
+        <dd>@Model.GraphicsCard</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>Producent</dt>
+        <dd>@Model.Producer</dd>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>Data Produkcji</dt>
+        <dd>@Model.DateOfProduction</dd>
+    </dl>
+
+</div>
+
+<p>
+    <a asp-action="Index">Powrót do listy</a>
+</p>

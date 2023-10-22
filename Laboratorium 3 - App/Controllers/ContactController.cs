@@ -56,9 +56,10 @@ namespace Laboratorium_3___App.Controllers
             return RedirectToAction("Index");
 
         }
+        [HttpGet]
         public IActionResult Details(int id)
         {
-           
+            return View(_contacts[id]);
         }
 
         [HttpPost]
