@@ -3,8 +3,16 @@
     public class MemoryContactService : IContactService
     {
         private Dictionary<int, Contact> _items = new Dictionary<int, Contact>();
+        private readonly IDateTimeProvider _timeProvider;
+
+        public MemoryContactService(IDateTimeProvider timeProvider)
+        {
+            _timeProvider = timeProvider;
+        }
+
         public int Add(Contact item)
         {
+            item.Created = _timeProvider.GetDateTime();
             int id = _items.Keys.Count != 0 ? _items.Keys.Max() : 0;
             item.Id = id + 1;
             _items.Add(item.Id, item);

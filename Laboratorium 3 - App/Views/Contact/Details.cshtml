@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<h2>Szczegóły Kontaktu</h2>
 <div class="mb-3">
     <label asp-for="Name">Imię</label>
     <input class="form-control" asp-for="Name" />
@@ -25,6 +26,10 @@
     <span class="text-danger" asp-validation-for="Birth"></span>
 
 </div>
+
+<p>Utworzono: @Model.Created</p>
+
+
 <div class="mb-3">
-    <button class=" btn btn-primary" type="submit">Powrót</button>
+    <a class="btn btn btn-primary" asp-controller="Contact" asp-action="Index">Powrót</a>
 </div>

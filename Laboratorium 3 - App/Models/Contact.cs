@@ -25,10 +25,13 @@ namespace Laboratorium_3___App.Models
         [Display(Name = "Numer telefonu")]
         public string Phone { get; set; }
         [Display(Name = "Data urodzenia")]
+        [DataType(DataType.Date)]
         public DateTime? Birth { get; set; }
 
         [Display(Name = "Priorytet")]
         public Priority Priority { get; set; }
+        [HiddenInput]
+        public DateTime Created { get; set; }
 
     }
 }
