@@ -14,6 +14,7 @@ namespace Laboratorium_2.Models
 
         public int CalculateAge()
         {
+            
             DateTime today = DateTime.Today;
             int age = today.Year - BirthDate.Year - (today.DayOfYear < BirthDate.DayOfYear ? 1 : 0);
             return age;
