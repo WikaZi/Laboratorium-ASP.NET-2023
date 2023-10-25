@@ -8,40 +8,49 @@
 <form asp-controller="Computer" asp-action="Create" method="post">
 
     <div class="mb-4">
-        <label asp-for="Name">Nazwa</label>
+        <label asp-for="Name"></label>
         <input class="form-control" asp-for="Name" />
         <span class="text-danger" asp-validation-for="Name"></span>
     </div>
     <div class="mb-4">
-        <label asp-for="Processor">Procesor</label>
+        <label asp-for="Processor"></label>
         <input class="form-control" asp-for="Processor" />
         <span class="text-danger" asp-validation-for="Processor"></span>
 
     </div>
     <div class="mb-4">
-        <label asp-for="Memory">Pamięć</label>
+        <label asp-for="Memory"></label>
         <input class="form-control" asp-for="Memory" />
         <span class="text-danger" asp-validation-for="Memory"></span>
 
     </div>
     <div class="mb-4">
-        <label asp-for="GraphicsCard">Karta Graficzna</label>
+        <label asp-for="GraphicsCard"></label>
         <input class="form-control" asp-for="GraphicsCard" />
         <span class="text-danger" asp-validation-for="GraphicsCard"></span>
 
     </div>
     <div class="mb-4">
-        <label asp-for="Producer">Producent</label>
+        <label asp-for="Producer"></label>
         <input class="form-control" asp-for="Producer" />
         <span class="text-danger" asp-validation-for="Producer"></span>
 
     </div>
     <div class="mb-4">
-        <label asp-for="DateOfProduction">Data produkcji</label>
+        <label asp-for="DateOfProduction"></label>
         <input class="form-control" asp-for="DateOfProduction" />
         <span class="text-danger" asp-validation-for="DateOfProduction"></span>
 
     </div>
+    <div>
+        <label asp-for="Status">Stan</label>
+        <div>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <select class="form-control" asp-for="Status" asp-items="@Html.GetEnumSelectList<UsageStatus>()"></select>
+    </div>
+
+
     <div class="mb-4">
         <button class=" btn btn-primary" type="submit">Dodaj</button>
     </div>

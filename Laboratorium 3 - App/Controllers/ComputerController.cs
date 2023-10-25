@@ -6,11 +6,14 @@ namespace Laboratorium_3___App.Controllers
 {
     public class ComputerController : Controller
     {
-        static Dictionary<int, Computer> _computers =  new Dictionary<int, Computer>();
-        static int id = 1;
+        private readonly IComputerService _computerService;
+        public ComputerController(IComputerService computerService)
+        {
+            _computerService = computerService;
+        }
         public IActionResult Index()
         {
-            return View(_computers);
+            return View(_computerService.FindAll());
         }
         [HttpGet]
         public IActionResult Create()
@@ -19,52 +22,59 @@ namespace Laboratorium_3___App.Controllers
         }
         [HttpPost]
         public IActionResult Create(Computer model) 
-        { 
+        {
             if (ModelState.IsValid)
             {
-                model.Id = id++;
-                _computers[model.Id] = model; //zapisanie modelu do bazy lub kolekcji
+                _computerService.Add(model);
                 return RedirectToAction("Index");
             }
-            return View();
+            else
+            {
+                return View(model);
+            }
+            
         }
         [HttpGet]
         public IActionResult Update(int id)
         {
-            return View(_computers[id]);
+            return View(_computerService.FindById(id));
         }
         [HttpPost]
         public IActionResult Update(Computer model)
         {
             if(ModelState.IsValid)
             {
-                _computers[model.Id] = model;
+                _computerService.Update(model);
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(model);
         }
         
 
         [HttpGet]
         public IActionResult Delete(int id) 
         {
-            return View(_computers[id]);
+            return View(_computerService.FindById(id));
         }
         [HttpPost]
         public IActionResult Delete(Computer model)
         {
-            _computers.Remove(model.Id);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _computerService.Delete(model.Id);
+                return RedirectToAction("Index");
+            }
+            return View(model); ;
         }
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return View(_computers[id]);
+            return View(_computerService.FindById(id));
         }
         [HttpPost]
         public IActionResult Details(Computer model) 
         {
-            return RedirectToAction("Details");
+            return RedirectToAction("Index");
         }
     }
 }
