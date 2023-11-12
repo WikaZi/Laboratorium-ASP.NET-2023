@@ -17,7 +17,10 @@ namespace Laboratorium_3___App
             builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddTransient<IContactService, EFContactService>();
             builder.Services.AddDbContext<Data.AppDbContext>();
-           
+            builder.Services.AddDbContext<Data.AppDbC>();
+            builder.Services.AddTransient<IComputerService, EFComputerService>();
+
+
 
             var app = builder.Build();
 
