@@ -1,4 +1,5 @@
 using Laboratorium_3___App.Models;
+using System.Xml.Linq;
 
 namespace Laboratorium_3___App
 {
@@ -13,6 +14,10 @@ namespace Laboratorium_3___App
             builder.Services.AddSingleton<IContactService, MemoryContactService>();
             builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProviderServices>();
             builder.Services.AddSingleton<IComputerService, MemoryComputerService>();
+            builder.Services.AddDbContext<Data.AppDbContext>();
+            builder.Services.AddTransient<IContactService, EFContactService>();
+            builder.Services.AddDbContext<Data.AppDbContext>();
+           
 
             var app = builder.Build();
 
