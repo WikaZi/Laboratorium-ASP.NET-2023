@@ -14,6 +14,7 @@ namespace Laboratorium_3___App.Mappers
                 Email = entity.Email,
                 Phone = entity.Phone,
                 Birth = entity.Birth,
+                OrganizationId = entity.OrganizationId,
             };
         }
 
@@ -26,6 +27,7 @@ namespace Laboratorium_3___App.Mappers
                 Email = model.Email,
                 Phone = model.Phone,
                 Birth = model.Birth,
+                OrganizationId = model.OrganizationId,
             };
         }
     }

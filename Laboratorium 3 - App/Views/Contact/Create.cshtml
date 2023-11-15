@@ -27,6 +27,10 @@
         <input class="form-control" asp-for="Birth" />
         <span class="text-danger" asp-validation-for="Birth"></span>
      </div>
+    <div class="form-group">
+        <select class="form-control" asp-for="OrganizationId" asp-items="@Model.OrganizationList"></select>
+    </div>
+     
     <div>
             <label asp-for="Priority">Kategoria</label>
             <div>
@@ -34,6 +38,7 @@
             </div>
             <select class="form-control" asp-for="Priority" asp-items="@Html.GetEnumSelectList<Priority>()"></select>
     </div>
+   
 
     <div class="mb-3">
         <button class=" btn btn-primary" type="submit">Utwórz</button>
