@@ -1,5 +1,8 @@
 using Laboratorium_3___App.Models;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Data;
 
 namespace Laboratorium_3___App
 {
@@ -10,15 +13,26 @@ namespace Laboratorium_3___App
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddSingleton<IContactService, MemoryContactService>();
             builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProviderServices>();
             builder.Services.AddSingleton<IComputerService, MemoryComputerService>();
-            builder.Services.AddDbContext<Data.AppDbContext>();
+           
+
+
+                        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+            builder.Services.AddRazorPages();
+            builder.Services.AddSession();
+            builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<IContactService, EFContactService>();
             builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddDbContext<Data.AppDbC>();
             builder.Services.AddTransient<IComputerService, EFComputerService>();
+            
 
 
 
@@ -36,9 +50,10 @@ namespace Laboratorium_3___App
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseSession();
+            app.MapRazorPages();
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
