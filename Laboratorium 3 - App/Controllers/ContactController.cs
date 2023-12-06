@@ -86,5 +86,22 @@ namespace Laboratorium_3___App.Controllers
         {
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateApi(Contact c)
+        {
+            if (ModelState.IsValid)
+            {
+                _contactService.Add(c);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+        // GET: ContactController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
     }
 }

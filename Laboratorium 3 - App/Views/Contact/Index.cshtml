@@ -4,6 +4,7 @@
 }
 <h1>Lista kontaktów</h1>
 <a class="btn btn-primary" asp-controller="Contact" asp-action="Create">Utwórz kontakt</a>
+<a asp-action="CreateApi">Dodaj książkę (wersja z API)</a>
 
     @if (Model.Count > 0){
     <table class="table">

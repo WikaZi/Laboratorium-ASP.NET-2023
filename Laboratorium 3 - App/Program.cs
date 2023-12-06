@@ -32,7 +32,8 @@ namespace Laboratorium_3___App
             builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddDbContext<Data.AppDbC>();
             builder.Services.AddTransient<IComputerService, EFComputerService>();
-            
+            builder.Services.AddMemoryCache();
+
 
 
 

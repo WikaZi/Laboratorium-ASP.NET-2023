@@ -13,6 +13,7 @@ namespace Data
     public class AppDbC : DbContext
     {
         public DbSet<ComputerEntity> Computers { get; set; }
+        
         private string DbPath { get; set; }
         public AppDbC()
         {
@@ -25,6 +26,10 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
+
+
             modelBuilder.Entity<ComputerEntity>().HasData(
                 new ComputerEntity()
                 {

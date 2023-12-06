@@ -30,6 +30,8 @@ namespace Data.Entities
         [Display(Name = "Data produkcji")]
         [DataType(DataType.Date)]
         public DateTime DateOfProduction { get; set; }
+
+        
       
     }
 }
