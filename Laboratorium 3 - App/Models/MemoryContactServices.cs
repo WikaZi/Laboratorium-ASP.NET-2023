@@ -19,6 +19,9 @@ namespace Laboratorium_3___App.Models
             item.Id = id + 1;
             _items.Add(item.Id, item);
             return item.Id;
+            //Contact.Id = id++;
+            //_items.Add(Contact.id contact)
+            
         }
 
         public void Delete(int id)
@@ -33,7 +36,8 @@ namespace Laboratorium_3___App.Models
 
         public Contact? FindById(int id)
         {
-            return _items[id];
+
+            return _items.ContainsKey(id) ? _items[id] : null;
         }
 
         public void Update(Contact item)

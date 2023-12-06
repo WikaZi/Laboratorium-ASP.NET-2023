@@ -2,6 +2,7 @@
 using Laboratorium_3___App.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using NuGet.Versioning;
 
 namespace Laboratorium_3___App.Controllers
 {
@@ -78,7 +79,12 @@ namespace Laboratorium_3___App.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return View(_contactService.FindById(id));
+            var model = _contactService.FindById(id);
+            if(model == null)
+            {
+                return NotFound();
+            }
+            return View();
         }
 
         [HttpPost]
