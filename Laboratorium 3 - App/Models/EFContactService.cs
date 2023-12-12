@@ -22,10 +22,16 @@ namespace Laboratorium_3___App.Models
 
         public void Delete(int id)
         {
-            ContactEntity? find = _context.Contacts.Find(id);
-            if (find != null)
+            //ContactEntity? find = _context.Contacts.Find(id);
+            //if (find != null)
+            //{
+            //    _context.Contacts.Remove(find);
+            //}
+            var find = _context.Contacts.Find(id);
+            if (find is not null)
             {
                 _context.Contacts.Remove(find);
+                _context.SaveChanges();
             }
         }
 
@@ -49,5 +55,22 @@ namespace Laboratorium_3___App.Models
         {
             _context.Contacts.Update(ContactMapper.ToEntity(contact));
         }
+        public PagingList<Contact> FindPage(int page, int size)
+        {
+            return PagingList<Contact>.Create(
+                (p, s) =>
+                    _context.Contacts
+                    .OrderBy(c => c.Name)
+                    .Skip((p - 1) * s)
+                    .Take(s)
+                    .Select(ContactMapper.FromEntity)
+                    .ToList()
+                ,
+                page,
+                size,
+                _context.Contacts.Count()
+                );
+        }
+
     }
 }

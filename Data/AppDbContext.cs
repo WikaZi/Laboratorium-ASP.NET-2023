@@ -20,7 +20,7 @@ namespace Data
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "contacts.db");
+            DbPath = System.IO.Path.Join(path, "contactss.db");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options) =>
         options.UseSqlite($"Data Source={DbPath}");
@@ -61,12 +61,13 @@ namespace Data
                     UserId = user.Id
                 }
                 );
-         
+            modelBuilder.Entity<OrganizationEntity>()
+               .OwnsOne(e => e.Address);
 
             modelBuilder.Entity<ContactEntity>()
-                .HasOne(c => c.Organization)
+                .HasOne(e => e.Organization)
                 .WithMany(O => O.Contacts)
-                .HasForeignKey(c => c.OrganizationId);
+                .HasForeignKey(e => e.OrganizationId);
             modelBuilder.Entity<OrganizationEntity>()
                 .HasData(
                 new OrganizationEntity()
@@ -81,7 +82,7 @@ namespace Data
                     Name = "Comarch",
                     Description = "Przedsiębiorstwo IT"
                 }
-                ) ;
+                ) ; 
 
             modelBuilder.Entity<ContactEntity>().HasData(
                 new ContactEntity() 
@@ -91,6 +92,7 @@ namespace Data
                     Phone = "127813268163",
                     Birth = new DateTime(2000, 10, 10), 
                     OrganizationId = 101, },
+
                 new ContactEntity() 
                 { Id = 2,
                     Name = "Ewa",
@@ -107,7 +109,7 @@ namespace Data
 
             ) ;
             modelBuilder.Entity<OrganizationEntity>()
-                .OwnsOne(o => o.Address)
+                .OwnsOne(e => e.Address)
                 .HasData(
                     new
                     {

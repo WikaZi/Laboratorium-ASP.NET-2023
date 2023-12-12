@@ -1,49 +1,41 @@
 ﻿@model Contact
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
-    ViewData["Title"] = "Home Page";
 }
-<h1>Dodaj kontakt</h1>
-<form asp-controller="Contact" asp-action="Create" method="post">
-
-    <div class="mb-3">
-        <label asp-for="Name">Imię</label>
+<h1>Dodaj nowy kontakt</h1>
+<form asp-controller="Contact" asp-action="CreateApi" method="post">
+    <div class="form-grup">
+        <label asp-for="Name"></label>
+        <div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
         <input class="form-control" asp-for="Name" />
-        <span class="text-danger" asp-validation-for="Name"></span>
     </div>
-    <div class="mb-3">
-        <label asp-for="Email">Adres mailowy</label>
+    <div class="form-grup">
+        <label asp-for="Email"></label>
+        <div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
         <input class="form-control" asp-for="Email" />
-        <span class="text-danger" asp-validation-for="Email"></span>
-
     </div>
-    <div class="mb-3">
+    <div class="form-grup">
         <label asp-for="Phone"></label>
+        <div>
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
         <input class="form-control" asp-for="Phone" />
-        <span class="text-danger" asp-validation-for="Phone"></span>
-
-    </div>
-    <div class="mb-3">
-        <label asp-for="Birth"></label>
-        <input class="form-control" asp-for="Birth" />
-        <span class="text-danger" asp-validation-for="Birth"></span>
     </div>
     <div class="form-group">
-        <select class="form-control" asp-for="OrganizationId" asp-items="@Model.OrganizationList"></select>
+        <label for="filter">Filtr organizacji</label>
+        <input class="form-control mb-3" type="text" name="filter" id="filter" />
+        <label asp-for="OrganizationId"></label>
+        <select class="form-control mb-3" asp-for="OrganizationId"></select>
     </div>
-
-    <div>
-        <label asp-for="Priority">Kategoria</label>
-        <div>
-            <span asp-validation-for="Priority" class="text-danger"></span>
-        </div>
-        <select class="form-control" asp-for="Priority" asp-items="@Html.GetEnumSelectList<Priority>()"></select>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Zapisz</button>
     </div>
-
-
-    <div class="mb-3">
-        <button class=" btn btn-primary" type="submit">Utwórz</button>
-    </div>
-
 </form>
 
 @section Scripts{

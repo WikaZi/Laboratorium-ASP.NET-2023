@@ -38,6 +38,7 @@ namespace Laboratorium_3___App.Models
         public Priority Priority { get; set; }
         [HiddenInput]
         public DateTime Created { get; set; }
+        [HiddenInput]
         public int? OrganizationId { get; set; }
         [ValidateNever]
         public List<SelectListItem> OrganizationList { get; set; }

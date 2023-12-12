@@ -20,6 +20,14 @@ namespace Laboratorium_3___App.Controllers
         {
             return View(_contactService.FindAll());
         }
+        public IActionResult PagedIndex(int page = 1, int size = 5)
+        {
+            if (size < 2)
+            {
+                return BadRequest();
+            }
+            return View(_contactService.FindPage(page, size));
+        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -42,6 +50,24 @@ namespace Laboratorium_3___App.Controllers
                 return View(model);
             }
 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateApi(Contact c)
+        {
+            if (ModelState.IsValid)
+            {
+                _contactService.Add(c);
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+
+        }
+
+        // GET: ContactController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
         }
         [HttpGet]
         public IActionResult Update(int id) 
@@ -79,12 +105,13 @@ namespace Laboratorium_3___App.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var model = _contactService.FindById(id);
-            if(model == null)
-            {
-                return NotFound();
-            }
-            return View();
+            //var model = _contactService.FindById(id);
+            //if(model == null)
+            //{
+            //    return NotFound();
+            //}
+            //return View();
+            return View(_contactService.FindById(id));
         }
 
         [HttpPost]
@@ -92,22 +119,7 @@ namespace Laboratorium_3___App.Controllers
         {
             return RedirectToAction("Index");
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateApi(Contact c)
-        {
-            if (ModelState.IsValid)
-            {
-                _contactService.Add(c);
-                return RedirectToAction(nameof(Index));
-            }
-            return View();
-        }
+       
 
-        // GET: ContactController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
     }
 }
