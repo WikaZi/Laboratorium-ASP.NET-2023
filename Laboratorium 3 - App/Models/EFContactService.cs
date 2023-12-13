@@ -54,6 +54,7 @@ namespace Laboratorium_3___App.Models
         public void Update(Contact contact)
         {
             _context.Contacts.Update(ContactMapper.ToEntity(contact));
+            _context.SaveChanges();
         }
         public PagingList<Contact> FindPage(int page, int size)
         {

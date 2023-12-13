@@ -42,6 +42,7 @@ namespace Laboratorium_3___App.Models
         public void Update(Computer computer)
         {
             _context.Computers.Update(ComputerMapper.ToEntity(computer));
+            _context.SaveChanges();
         }
     }
 }
