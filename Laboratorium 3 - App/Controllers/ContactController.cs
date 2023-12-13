@@ -51,6 +51,12 @@ namespace Laboratorium_3___App.Controllers
             }
 
         }
+        [HttpGet]
+
+        public IActionResult CreateApi()
+        {
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateApi(Contact c)
