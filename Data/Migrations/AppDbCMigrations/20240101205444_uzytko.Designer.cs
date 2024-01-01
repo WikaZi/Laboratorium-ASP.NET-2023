@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations.AppDbCMigrations
 {
     [DbContext(typeof(AppDbC))]
-    partial class AppDbCModelSnapshot : ModelSnapshot
+    [Migration("20240101205444_uzytko")]
+    partial class uzytko
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -180,7 +183,7 @@ namespace Data.Migrations.AppDbCMigrations
                         {
                             Id = 1,
                             ComputerId = 123,
-                            ExpirationDate = new DateTime(2025, 1, 1, 22, 13, 45, 750, DateTimeKind.Local).AddTicks(2252),
+                            ExpirationDate = new DateTime(2025, 1, 1, 21, 54, 44, 680, DateTimeKind.Local).AddTicks(3947),
                             LicenseKey = "ABAB1212",
                             LicenseType = "Bussiness",
                             SoftwareId = 1
@@ -189,7 +192,7 @@ namespace Data.Migrations.AppDbCMigrations
                         {
                             Id = 2,
                             ComputerId = 223,
-                            ExpirationDate = new DateTime(2024, 7, 1, 22, 13, 45, 750, DateTimeKind.Local).AddTicks(2284),
+                            ExpirationDate = new DateTime(2024, 7, 1, 21, 54, 44, 680, DateTimeKind.Local).AddTicks(3979),
                             LicenseKey = "MI45-L",
                             LicenseType = "Home",
                             SoftwareId = 2
@@ -224,17 +227,10 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            Id = "a44b6daf-00c0-4404-8db9-04b516c15598",
-                            ConcurrencyStamp = "a44b6daf-00c0-4404-8db9-04b516c15598",
+                            Id = "401c1507-fc76-43f2-bbc9-c923f7098e92",
+                            ConcurrencyStamp = "401c1507-fc76-43f2-bbc9-c923f7098e92",
                             Name = "admin",
                             NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "e5b196c8-912a-4c8d-acf4-6808ca8d81f5",
-                            ConcurrencyStamp = "e5b196c8-912a-4c8d-acf4-6808ca8d81f5",
-                            Name = "user",
-                            NormalizedName = "USER"
                         });
                 });
 
@@ -327,33 +323,17 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            Id = "7bbd2f4c-0081-4604-ad5a-d06faa3fb08f",
+                            Id = "e259eea3-9a49-4c11-9edf-0d5db88cd749",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3bd80aeb-d050-4ef9-a103-f117fb8c8457",
-                            Email = "adam@wsei.pl",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADAM@WSEI.PL",
-                            NormalizedUserName = "ADAM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOOrxOPrchK7ocLcpaqCTRR6jFvMRj9yF5SeIf0gv9MWLe1NIhwYS6yxOQIMlGCnEQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "1613a60f-e9fb-47a1-9dac-3041b259f72c",
-                            TwoFactorEnabled = false,
-                            UserName = "adam"
-                        },
-                        new
-                        {
-                            Id = "ae39cd25-abd1-4982-b813-1eeca5ab9a30",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c380669-b071-400f-9b1b-cf52d093e886",
+                            ConcurrencyStamp = "51daeb41-0a4a-4ba9-9181-be373ad64d29",
                             Email = "wika@wsei.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "WIKA@WSEI.PL",
                             NormalizedUserName = "WIKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKylrWCkqwKiJvlHEjO9XOYJu2EPSDdmAKwFQ9nsNaJuGvDzmD/WxnJHtTNtFTYEmg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHu5ITV+pVNV2DcKVAVaxssimwwTMvjOjmju1G8mv18pQGLQ6U1ZVgokRIXggx8Pog==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1d318f4b-3242-4641-ae77-dfd28d470bfb",
+                            SecurityStamp = "337903f8-cffc-432e-9cf9-538f0891e3cd",
                             TwoFactorEnabled = false,
                             UserName = "wika"
                         });
@@ -421,13 +401,8 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            UserId = "7bbd2f4c-0081-4604-ad5a-d06faa3fb08f",
-                            RoleId = "a44b6daf-00c0-4404-8db9-04b516c15598"
-                        },
-                        new
-                        {
-                            UserId = "ae39cd25-abd1-4982-b813-1eeca5ab9a30",
-                            RoleId = "e5b196c8-912a-4c8d-acf4-6808ca8d81f5"
+                            UserId = "e259eea3-9a49-4c11-9edf-0d5db88cd749",
+                            RoleId = "401c1507-fc76-43f2-bbc9-c923f7098e92"
                         });
                 });
 

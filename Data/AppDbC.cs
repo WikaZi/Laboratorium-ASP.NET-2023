@@ -31,85 +31,78 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-            base.OnModelCreating(modelBuilder);
-            string ADMIN_ID = Guid.NewGuid().ToString();
-            string ROLE_ID = Guid.NewGuid().ToString();
-
-            
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+             base.OnModelCreating(modelBuilder);
+            var user = new IdentityUser()
             {
+                Id = Guid.NewGuid().ToString(),
+                UserName = "adam",
+                NormalizedUserName = "ADAM",
+                Email = "adam@wsei.pl",
+                NormalizedEmail = "ADAM@WSEI.PL",
+                EmailConfirmed = true,
+            };
+            PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
+            user.PasswordHash = passwordHasher.HashPassword(user, "1234Abcd$");
+            modelBuilder.Entity<IdentityUser>()
+                .HasData(user);
+
+            //towrzenie roli
+            var adminRole = new IdentityRole()
+            {
+                Id = Guid.NewGuid().ToString(),
                 Name = "admin",
-                NormalizedName = "ADMIN",
-                Id = ROLE_ID,
-                ConcurrencyStamp = ROLE_ID
-            });
-
+                NormalizedName = "ADMIN"
+            };
+            adminRole.ConcurrencyStamp =adminRole.Id;
+            modelBuilder.Entity<IdentityRole>()
+             .HasData(adminRole);
             
-            var admin = new IdentityUser
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasData(
+                new IdentityUserRole<string>()
+                {
+                    RoleId = adminRole.Id,
+                    UserId = user.Id
+                }
+                );
+            var user1 = new IdentityUser()
             {
-                Id = ADMIN_ID,
-                Email = "wika@wiw.pl",
-                EmailConfirmed = true,
+                Id = Guid.NewGuid().ToString(),
                 UserName = "wika",
-                NormalizedUserName = "ADMIN"
-            };
-
-            
-            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
-            admin.PasswordHash = ph.HashPassword(admin, "1234Abcd$!");
-
-           
-            modelBuilder.Entity<IdentityUser>().HasData(admin);
-
-            
-            modelBuilder.Entity<IdentityUserRole<string>>()
-            .HasData(new IdentityUserRole<string>
-            {
-                RoleId = ROLE_ID,
-                UserId = ADMIN_ID
-            });
-
-            
-
-
-            string USER_ID = Guid.NewGuid().ToString();
-            string USER_ROLE_ID = Guid.NewGuid().ToString();
-
-            
-            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Name = "user",
-                NormalizedName = "USER",
-                Id = USER_ROLE_ID,
-                ConcurrencyStamp = USER_ROLE_ID
-            });
-
-            
-            var user = new IdentityUser
-            {
-                Id = USER_ID,
-                Email = "ola@wiw.pl",
+                NormalizedUserName = "WIKA",
+                Email = "wika@wsei.pl",
+                NormalizedEmail = "WIKA@WSEI.PL",
                 EmailConfirmed = true,
-                UserName = "ola",
-                NormalizedUserName = "USER"
             };
+            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
+            user1.PasswordHash = ph.HashPassword(user1, "1234Abcd$!");
+            modelBuilder.Entity<IdentityUser>()
+                .HasData(user1);
 
-            
-            PasswordHasher<IdentityUser> phUser = new PasswordHasher<IdentityUser>();
-            user.PasswordHash = phUser.HashPassword(user, "ABC1234@#");
-
-            
-            modelBuilder.Entity<IdentityUser>().HasData(user);
-
-            
-            modelBuilder.Entity<IdentityUserRole<string>>()
-            .HasData(new IdentityUserRole<string>
+            //towrzenie roli
+            var userRole = new IdentityRole()
             {
-                RoleId = USER_ROLE_ID,
-                UserId = USER_ID
-            });
-           
+                Id = Guid.NewGuid().ToString(),
+                Name = "user",
+                NormalizedName = "USER"
+            };
+            userRole.ConcurrencyStamp = userRole.Id;
+            modelBuilder.Entity<IdentityRole>()
+             .HasData(userRole);
+            //skojarzenie uzytkownika
+
+            modelBuilder.Entity<IdentityUserRole<string>>()
+                .HasData(
+                new IdentityUserRole<string>()
+                {
+                    RoleId = userRole.Id,
+                    UserId = user1.Id
+                }
+                );
+
+
+
             modelBuilder.Entity<SoftwareEntity>().HasData(
                 new SoftwareEntity()
                 {

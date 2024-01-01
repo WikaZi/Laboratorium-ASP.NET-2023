@@ -3,6 +3,7 @@ using System;
 using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations.AppDbCMigrations
 {
     [DbContext(typeof(AppDbC))]
-    partial class AppDbCModelSnapshot : ModelSnapshot
+    [Migration("20240101210214_pop-users")]
+    partial class popusers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -180,7 +183,7 @@ namespace Data.Migrations.AppDbCMigrations
                         {
                             Id = 1,
                             ComputerId = 123,
-                            ExpirationDate = new DateTime(2025, 1, 1, 22, 13, 45, 750, DateTimeKind.Local).AddTicks(2252),
+                            ExpirationDate = new DateTime(2025, 1, 1, 22, 2, 14, 712, DateTimeKind.Local).AddTicks(2201),
                             LicenseKey = "ABAB1212",
                             LicenseType = "Bussiness",
                             SoftwareId = 1
@@ -189,7 +192,7 @@ namespace Data.Migrations.AppDbCMigrations
                         {
                             Id = 2,
                             ComputerId = 223,
-                            ExpirationDate = new DateTime(2024, 7, 1, 22, 13, 45, 750, DateTimeKind.Local).AddTicks(2284),
+                            ExpirationDate = new DateTime(2024, 7, 1, 22, 2, 14, 712, DateTimeKind.Local).AddTicks(2236),
                             LicenseKey = "MI45-L",
                             LicenseType = "Home",
                             SoftwareId = 2
@@ -224,15 +227,15 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            Id = "a44b6daf-00c0-4404-8db9-04b516c15598",
-                            ConcurrencyStamp = "a44b6daf-00c0-4404-8db9-04b516c15598",
+                            Id = "f7d5f704-4237-4131-8f8b-3bdf06528f61",
+                            ConcurrencyStamp = "f7d5f704-4237-4131-8f8b-3bdf06528f61",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "e5b196c8-912a-4c8d-acf4-6808ca8d81f5",
-                            ConcurrencyStamp = "e5b196c8-912a-4c8d-acf4-6808ca8d81f5",
+                            Id = "bf85911a-5257-464e-bbbb-2542c8f1f105",
+                            ConcurrencyStamp = "5f0bf86c-1fce-4a10-9e6a-c380f7bd6c43",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -327,33 +330,33 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            Id = "7bbd2f4c-0081-4604-ad5a-d06faa3fb08f",
+                            Id = "3cfa1415-6558-4431-9b5d-3b75f8006795",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3bd80aeb-d050-4ef9-a103-f117fb8c8457",
+                            ConcurrencyStamp = "9a313d1e-a8ca-4acd-8a82-076dcd5fa82a",
                             Email = "adam@wsei.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADAM@WSEI.PL",
                             NormalizedUserName = "ADAM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOOrxOPrchK7ocLcpaqCTRR6jFvMRj9yF5SeIf0gv9MWLe1NIhwYS6yxOQIMlGCnEQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPO3R9SBScGwbkZDEsivJAN7/Kbsun9+KzvpuEZxoIFf2f4AJdLUBtUknYfdrpitCw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1613a60f-e9fb-47a1-9dac-3041b259f72c",
+                            SecurityStamp = "be90fd8f-e6c8-490d-a25b-e57fd08d8be5",
                             TwoFactorEnabled = false,
                             UserName = "adam"
                         },
                         new
                         {
-                            Id = "ae39cd25-abd1-4982-b813-1eeca5ab9a30",
+                            Id = "af6e98ca-8762-4848-92c0-79872338c73e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c380669-b071-400f-9b1b-cf52d093e886",
+                            ConcurrencyStamp = "9ea86cc7-e17d-4454-badd-856d70ee2d3e",
                             Email = "wika@wsei.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "WIKA@WSEI.PL",
                             NormalizedUserName = "WIKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKylrWCkqwKiJvlHEjO9XOYJu2EPSDdmAKwFQ9nsNaJuGvDzmD/WxnJHtTNtFTYEmg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAS5X2FwdGVVt9yYLb3RH353VPlWp5gYfQAxqi7WDWTr9u2zgZXAhdU1g9mjRNIRmQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1d318f4b-3242-4641-ae77-dfd28d470bfb",
+                            SecurityStamp = "445e8043-3d8a-4abe-a2ce-d9c0a1c565ca",
                             TwoFactorEnabled = false,
                             UserName = "wika"
                         });
@@ -421,13 +424,13 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            UserId = "7bbd2f4c-0081-4604-ad5a-d06faa3fb08f",
-                            RoleId = "a44b6daf-00c0-4404-8db9-04b516c15598"
+                            UserId = "3cfa1415-6558-4431-9b5d-3b75f8006795",
+                            RoleId = "f7d5f704-4237-4131-8f8b-3bdf06528f61"
                         },
                         new
                         {
-                            UserId = "ae39cd25-abd1-4982-b813-1eeca5ab9a30",
-                            RoleId = "e5b196c8-912a-4c8d-acf4-6808ca8d81f5"
+                            UserId = "af6e98ca-8762-4848-92c0-79872338c73e",
+                            RoleId = "bf85911a-5257-464e-bbbb-2542c8f1f105"
                         });
                 });
 

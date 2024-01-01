@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Laboratorium_3___App.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     public class ComputerController : Controller
     {
         private readonly IComputerService _computerService;

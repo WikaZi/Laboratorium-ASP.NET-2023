@@ -11,6 +11,7 @@ namespace Laboratorium_3___App
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+                        var connectionString = builder.Configuration.GetConnectionString("AppDbCConnection") ?? throw new InvalidOperationException("Connection string 'AppDbCConnection' not found.");
 
             // Add services to the container.
 
