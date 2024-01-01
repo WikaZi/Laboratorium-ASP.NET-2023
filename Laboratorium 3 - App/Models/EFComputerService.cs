@@ -26,6 +26,7 @@ namespace Laboratorium_3___App.Models
             if (find != null)
             {
                 _context.Computers.Remove(find);
+                _context.SaveChanges();
             }
         }
 

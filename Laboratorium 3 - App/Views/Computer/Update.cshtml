@@ -43,6 +43,13 @@
         <span class="text-danger" asp-validation-for="DateOfProduction"></span>
 
     </div>
+    <div>
+        <label asp-for="Status">Status</label>
+        <div>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <select class="form-control" asp-for="Status" asp-items="@Html.GetEnumSelectList<UsageStatus>()"></select>
+    </div>
     <div class="mb-4">
         <button class=" btn btn-primary" type="submit">Zapisz</button>
     </div>

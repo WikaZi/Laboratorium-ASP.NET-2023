@@ -22,17 +22,19 @@ namespace Laboratorium_3___App.Models
 
         public void Delete(int id)
         {
-            //ContactEntity? find = _context.Contacts.Find(id);
-            //if (find != null)
+            //var find = _context.Contacts.Find(id);
+            //if (find is not null)
             //{
             //    _context.Contacts.Remove(find);
+            //    _context.SaveChanges();
             //}
-            var find = _context.Contacts.Find(id);
-            if (find is not null)
+            ContactEntity? find = _context.Contacts.Find(id);
+            if (find != null)
             {
                 _context.Contacts.Remove(find);
                 _context.SaveChanges();
             }
+
         }
 
         public List<Contact> FindAll()

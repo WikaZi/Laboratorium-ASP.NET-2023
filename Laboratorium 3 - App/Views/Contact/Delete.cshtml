@@ -4,13 +4,13 @@
 }
 
 <h1>Czy na pewno chcesz usunąć kontakt?</h1>
-<p>imię</p>
-<h3>@Model.Name</h3>
-<p>email</p>
-<h3>@Model.Email</h3>
+<p>Imię:</p>
+<h4>@Model.Name</h4>
+<p>Email:</p>
+<h4>@Model.Email</h4>
 <form asp-action="Delete">
     <input asp-for="Id"/>
-    <button class="btn btn-danger" type="submit">Tak</button>
+    <button class="btn btn-danger" type = "submit">Tak</button>
     <a class="btn btn-close" asp-action = "Index">Nie</a>
 
 </form>

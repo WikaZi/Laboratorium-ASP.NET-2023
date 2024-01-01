@@ -94,18 +94,26 @@ namespace Laboratorium_3___App.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View(_contactService.FindById(id));
+            Contact contact = _contactService.FindById(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+            return View(contact);
+            //return View(_contactService.FindById(id));
 
         }
         [HttpPost]
         public IActionResult Delete(Contact model)
         {
-            if (ModelState.IsValid)
-            {
-                _contactService.Delete(model.Id);
-                return RedirectToAction("Index");
-            }
-            return View(model);
+            _contactService.Delete(model.Id);
+            return RedirectToAction("Index");
+            //if (ModelState.IsValid)
+            //{
+            //    _contactService.Delete(model.Id);
+            //    return RedirectToAction("Index");
+            //}
+            //return View(model);
 
         }
         [HttpGet]

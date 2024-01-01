@@ -32,8 +32,13 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => Model[0].Status)
+                
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => Model[0].SoftwareName)
 
                 </th>
+               
                 <th>
                     Akcje
                 </th>
@@ -63,6 +68,9 @@
                     </td>
                     <td>
                         @item.Status.GetDisplayName()
+                    </td>
+                    <td>
+                        @(item.Software != null ? item.Software.Name : "Brak oprogramowania")
                     </td>
                     <td>
                         <a class="btn btn-outline-primary" asp-controller="Computer" asp-action="Update" asp-route-id="@item.Id">Edytuj</a>

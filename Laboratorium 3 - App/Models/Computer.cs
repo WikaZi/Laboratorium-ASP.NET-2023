@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Data.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace Laboratorium_3___App.Models
@@ -36,5 +37,7 @@ namespace Laboratorium_3___App.Models
         public DateTime DateOfProduction { get; set; }
         [Display(Name = "Status")]
         public UsageStatus Status { get; set; }
+        public string? SoftwareName { get; set; }
+        public virtual Software Software { get; set; }
     }
 }

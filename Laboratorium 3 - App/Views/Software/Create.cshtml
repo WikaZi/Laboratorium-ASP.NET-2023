@@ -1,0 +1,27 @@
+﻿@model Software
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Dodaj Oprogramowanie</h2>
+<form asp-controller="Software" asp-action="Create" method="post">
+
+    <div class="mb-4">
+        <label asp-for="Name">Nazwa</label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-4">
+        <label asp-for="Version">Wersja</label>
+        <input class="form-control" asp-for="Version" />
+        <span class="text-danger" asp-validation-for="Version"></span>
+
+  
+
+
+    <div class="mb-4">
+        <button class=" btn btn-primary" type="submit">Dodaj</button>
+    </div>
+
+</form>

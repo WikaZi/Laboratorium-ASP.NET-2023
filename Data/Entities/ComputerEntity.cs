@@ -31,6 +31,9 @@ namespace Data.Entities
         [DataType(DataType.Date)]
         public DateTime DateOfProduction { get; set; }
 
+        public ISet<SoftwareEntity> Softwares { get; set; }
+
+        public int? SoftwareId { get; set; }
         
       
     }

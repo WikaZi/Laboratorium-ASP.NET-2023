@@ -1,0 +1,32 @@
+﻿@model List<Software>
+
+<h2>Lista Oprogramowań</h2>
+
+<a class="btn btn-primary" asp-controller="Software" asp-action="Create">Dodaj oprogramowanie</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+            <th>Wersja</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var software in Model)
+        {
+            <tr>
+                <td>@software.Id</td>
+                <td>@software.Name</td>
+                <td>@software.Version</td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@software.Id">Szczegóły</a> |
+                    <a asp-action="Update" asp-route-id="@software.Id">Edytuj</a> |
+                    <a asp-action="Delete" asp-route-id="@software.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

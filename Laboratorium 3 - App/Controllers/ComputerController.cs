@@ -1,9 +1,11 @@
 ﻿using Laboratorium_3___App.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
 namespace Laboratorium_3___App.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ComputerController : Controller
     {
         private readonly IComputerService _computerService;
@@ -54,18 +56,22 @@ namespace Laboratorium_3___App.Controllers
         [HttpGet]
         public IActionResult Delete(int id) 
         {
-            return View(_computerService.FindById(id));
+            Computer computer = _computerService.FindById(id);
+            if (computer == null)
+            {
+                return NotFound();
+            }
+            return View(computer);
         }
         [HttpPost]
         public IActionResult Delete(Computer model)
         {
-            if (ModelState.IsValid)
-            {
-                _computerService.Delete(model.Id);
-                return RedirectToAction("Index");
-            }
-            return View(model); ;
+           
+             _computerService.Delete(model.Id);
+             return RedirectToAction("Index");
+          
         }
+
         [HttpGet]
         public IActionResult Details(int id)
         {
