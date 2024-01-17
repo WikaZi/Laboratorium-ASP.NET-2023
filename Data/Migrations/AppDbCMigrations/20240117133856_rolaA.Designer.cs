@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations.AppDbCMigrations
 {
     [DbContext(typeof(AppDbC))]
-    [Migration("20240101210214_pop-users")]
-    partial class popusers
+    [Migration("20240117133856_rolaA")]
+    partial class rolaA
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,18 +33,6 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasIndex("SoftwaresId");
 
                     b.ToTable("ComputerEntitySoftwareEntity");
-
-                    b.HasData(
-                        new
-                        {
-                            ComputersId = 123,
-                            SoftwaresId = 1
-                        },
-                        new
-                        {
-                            ComputersId = 223,
-                            SoftwaresId = 2
-                        });
                 });
 
             modelBuilder.Entity("Data.Entities.ComputerEntity", b =>
@@ -92,8 +80,7 @@ namespace Data.Migrations.AppDbCMigrations
                             Memory = "32GB",
                             Name = "G4MR-HERO",
                             Processor = "i7-13700F",
-                            Producer = "6253efvdfEr2",
-                            SoftwareId = 1
+                            Producer = "6253efvdfEr2"
                         },
                         new
                         {
@@ -103,8 +90,17 @@ namespace Data.Migrations.AppDbCMigrations
                             Memory = "64GB",
                             Name = "POW3R-HUGE",
                             Processor = "i9-11900K",
-                            Producer = "MAVIS-PR",
-                            SoftwareId = 2
+                            Producer = "MAVIS-PR"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            DateOfProduction = new DateTime(2013, 12, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GraphicsCard = "RTX-4060TI",
+                            Memory = "128GB",
+                            Name = "D3MOGA-23",
+                            Processor = "i9-13700K",
+                            Producer = "XAMI"
                         });
                 });
 
@@ -125,78 +121,6 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasKey("Id");
 
                     b.ToTable("Softwares");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Microsoft Office",
-                            Version = "365"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Windows 10",
-                            Version = "20H2"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Visual Studio Code",
-                            Version = "1.50.1"
-                        });
-                });
-
-            modelBuilder.Entity("Data.Entities.SoftwareLicenseEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ComputerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("ExpirationDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LicenseKey")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LicenseType")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("SoftwareId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ComputerId");
-
-                    b.HasIndex("SoftwareId");
-
-                    b.ToTable("Licences");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ComputerId = 123,
-                            ExpirationDate = new DateTime(2025, 1, 1, 22, 2, 14, 712, DateTimeKind.Local).AddTicks(2201),
-                            LicenseKey = "ABAB1212",
-                            LicenseType = "Bussiness",
-                            SoftwareId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ComputerId = 223,
-                            ExpirationDate = new DateTime(2024, 7, 1, 22, 2, 14, 712, DateTimeKind.Local).AddTicks(2236),
-                            LicenseKey = "MI45-L",
-                            LicenseType = "Home",
-                            SoftwareId = 2
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -227,17 +151,10 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            Id = "f7d5f704-4237-4131-8f8b-3bdf06528f61",
-                            ConcurrencyStamp = "f7d5f704-4237-4131-8f8b-3bdf06528f61",
+                            Id = "4e7e18a5-dbb3-4de1-b3fb-579bd7d58544",
+                            ConcurrencyStamp = "4e7e18a5-dbb3-4de1-b3fb-579bd7d58544",
                             Name = "admin",
                             NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "bf85911a-5257-464e-bbbb-2542c8f1f105",
-                            ConcurrencyStamp = "5f0bf86c-1fce-4a10-9e6a-c380f7bd6c43",
-                            Name = "user",
-                            NormalizedName = "USER"
                         });
                 });
 
@@ -330,33 +247,16 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            Id = "3cfa1415-6558-4431-9b5d-3b75f8006795",
+                            Id = "d42ef16a-ed37-4ef3-804e-ccdcdd84a01f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9a313d1e-a8ca-4acd-8a82-076dcd5fa82a",
-                            Email = "adam@wsei.pl",
+                            ConcurrencyStamp = "84469c7d-ec38-4e22-bc32-f68781fe5c14",
+                            Email = "wika@wsei.edu.pl",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADAM@WSEI.PL",
-                            NormalizedUserName = "ADAM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPO3R9SBScGwbkZDEsivJAN7/Kbsun9+KzvpuEZxoIFf2f4AJdLUBtUknYfdrpitCw==",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEAeDXValOLPiTUsXGJSQKczVruSeWOP5/oA2kHYN8ipw8sYO4z7HvDi3ohgYY53Dg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "be90fd8f-e6c8-490d-a25b-e57fd08d8be5",
-                            TwoFactorEnabled = false,
-                            UserName = "adam"
-                        },
-                        new
-                        {
-                            Id = "af6e98ca-8762-4848-92c0-79872338c73e",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9ea86cc7-e17d-4454-badd-856d70ee2d3e",
-                            Email = "wika@wsei.pl",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "WIKA@WSEI.PL",
-                            NormalizedUserName = "WIKA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAS5X2FwdGVVt9yYLb3RH353VPlWp5gYfQAxqi7WDWTr9u2zgZXAhdU1g9mjRNIRmQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "445e8043-3d8a-4abe-a2ce-d9c0a1c565ca",
+                            SecurityStamp = "bc160136-d5cb-4b71-848c-b536c368c070",
                             TwoFactorEnabled = false,
                             UserName = "wika"
                         });
@@ -424,13 +324,8 @@ namespace Data.Migrations.AppDbCMigrations
                     b.HasData(
                         new
                         {
-                            UserId = "3cfa1415-6558-4431-9b5d-3b75f8006795",
-                            RoleId = "f7d5f704-4237-4131-8f8b-3bdf06528f61"
-                        },
-                        new
-                        {
-                            UserId = "af6e98ca-8762-4848-92c0-79872338c73e",
-                            RoleId = "bf85911a-5257-464e-bbbb-2542c8f1f105"
+                            UserId = "d42ef16a-ed37-4ef3-804e-ccdcdd84a01f",
+                            RoleId = "4e7e18a5-dbb3-4de1-b3fb-579bd7d58544"
                         });
                 });
 
@@ -466,25 +361,6 @@ namespace Data.Migrations.AppDbCMigrations
                         .HasForeignKey("SoftwaresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Data.Entities.SoftwareLicenseEntity", b =>
-                {
-                    b.HasOne("Data.Entities.ComputerEntity", "Computer")
-                        .WithMany()
-                        .HasForeignKey("ComputerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Data.Entities.SoftwareEntity", "Software")
-                        .WithMany()
-                        .HasForeignKey("SoftwareId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Computer");
-
-                    b.Navigation("Software");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

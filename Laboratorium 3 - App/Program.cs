@@ -22,9 +22,12 @@ namespace Laboratorium_3___App
            
 
 
-                        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //builder.Services.AddDefaultIdentity<IdentityUser>()
+            //    .AddRoles<IdentityRole>()
+            //    .AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>();
+                .AddEntityFrameworkStores<AppDbC>();
 
             builder.Services.AddRazorPages();
             builder.Services.AddSession();
@@ -33,7 +36,7 @@ namespace Laboratorium_3___App
             builder.Services.AddDbContext<Data.AppDbContext>();
             builder.Services.AddDbContext<Data.AppDbC>();
             builder.Services.AddTransient<IComputerService, EFComputerService>();
-            builder.Services.AddTransient<ISoftwareService, EFSoftwareService>();
+            //builder.Services.AddTransient<ISoftwareService, EFSoftwareService>();
             builder.Services.AddMemoryCache();
 
 

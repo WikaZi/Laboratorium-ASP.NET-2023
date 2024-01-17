@@ -2,6 +2,44 @@
 @{
 
 }
+
+<style>
+
+    body {
+        font-family: sans-serif;
+        background-color: #f8f8f8;
+    }
+
+    h1 {
+        display: flex;
+        margin-left: 500px
+        
+    }
+
+    .container {
+        position: relative;
+        overflow: hidden;
+        width: 1700px;
+        height: 700px;
+        margin: 40px auto 0;
+        background-color: white;
+    }
+
+    .btn.btn-primary {
+        background-color:black;
+        margin-left: 560px
+    }
+    .a:active {
+        background-color: black;
+    }
+
+   
+
+    .form-check-input {
+        background-color: black;
+    }
+
+</style>
 <h1>Lista komputerów</h1>
 <a class="btn btn-primary" asp-controller="Computer" asp-action="Create">Utwórz komputer</a>
 @if (Model.Count > 0)
@@ -34,10 +72,7 @@
                     @Html.DisplayNameFor(model => Model[0].Status)
                 
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => Model[0].SoftwareName)
-
-                </th>
+                
                
                 <th>
                     Akcje
@@ -69,9 +104,7 @@
                     <td>
                         @item.Status.GetDisplayName()
                     </td>
-                    <td>
-                        @(item.Software != null ? item.Software.Name : "Brak oprogramowania")
-                    </td>
+                   
                     <td>
                         <a class="btn btn-outline-primary" asp-controller="Computer" asp-action="Update" asp-route-id="@item.Id">Edytuj</a>
                         <a class="btn btn-outline-info" asp-controller="Computer" asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>

@@ -13,6 +13,7 @@ namespace Laboratorium_3___App.Controllers
         {
             _computerService = computerService;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_computerService.FindAll());

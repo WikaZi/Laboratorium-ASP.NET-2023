@@ -17,7 +17,7 @@ namespace Data
     public class AppDbC : IdentityDbContext<IdentityUser>
     {
         public DbSet<ComputerEntity> Computers { get; set; }
-        public DbSet<SoftwareEntity> Softwares { get; set; }
+        //public DbSet<SoftwareEntity> Softwares { get; set; }
         
         private string DbPath { get; set; }
         public AppDbC()
@@ -31,21 +31,21 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-             base.OnModelCreating(modelBuilder);
+
+            base.OnModelCreating(modelBuilder);
             var user = new IdentityUser()
             {
                 Id = Guid.NewGuid().ToString(),
-                UserName = "adam",
-                NormalizedUserName = "ADAM",
-                Email = "adam@wsei.pl",
-                NormalizedEmail = "ADAM@WSEI.PL",
+                UserName = "wika",
+                NormalizedUserName = "WIKA",
+                Email = "wika@wsei.pl",
+                NormalizedEmail = "WIKA@WSEI.PL",
                 EmailConfirmed = true,
             };
             PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
             user.PasswordHash = passwordHasher.HashPassword(user, "1234Abcd$");
             modelBuilder.Entity<IdentityUser>()
                 .HasData(user);
-
             //towrzenie roli
             var adminRole = new IdentityRole()
             {
@@ -53,10 +53,10 @@ namespace Data
                 Name = "admin",
                 NormalizedName = "ADMIN"
             };
-            adminRole.ConcurrencyStamp =adminRole.Id;
+            adminRole.ConcurrencyStamp = adminRole.Id;
             modelBuilder.Entity<IdentityRole>()
              .HasData(adminRole);
-            
+            //skojarzenie uzytkownika
 
             modelBuilder.Entity<IdentityUserRole<string>>()
                 .HasData(
@@ -66,20 +66,20 @@ namespace Data
                     UserId = user.Id
                 }
                 );
-            var user1 = new IdentityUser()
+
+           
+            var secondUser = new IdentityUser()
             {
                 Id = Guid.NewGuid().ToString(),
-                UserName = "wika",
-                NormalizedUserName = "WIKA",
-                Email = "wika@wsei.pl",
-                NormalizedEmail = "WIKA@WSEI.PL",
+                UserName = "nikola",
+                NormalizedUserName = "NIKOLA",
+                Email = "nikola@wsei.pl",
+                NormalizedEmail = "NIKOLA@WSEI.PL",
                 EmailConfirmed = true,
             };
-            PasswordHasher<IdentityUser> ph = new PasswordHasher<IdentityUser>();
-            user1.PasswordHash = ph.HashPassword(user1, "1234Abcd$!");
+            secondUser.PasswordHash = passwordHasher.HashPassword(secondUser, "5678Efgh$!!");
             modelBuilder.Entity<IdentityUser>()
-                .HasData(user1);
-
+                .HasData(secondUser);
             //towrzenie roli
             var userRole = new IdentityRole()
             {
@@ -97,35 +97,9 @@ namespace Data
                 new IdentityUserRole<string>()
                 {
                     RoleId = userRole.Id,
-                    UserId = user1.Id
+                    UserId = secondUser.Id
                 }
                 );
-
-
-
-            modelBuilder.Entity<SoftwareEntity>().HasData(
-                new SoftwareEntity()
-                {
-                    Id = 1,
-                    Name = "Microsoft Office",
-                    Version = "365"
-                },
-                new SoftwareEntity()
-                {
-                    Id = 2,
-                    Name = "Windows 10",
-                    Version = "20H2"
-                },
-                new SoftwareEntity()
-                {
-                    Id = 3,
-                    Name = "Visual Studio Code",
-                    Version = "1.50.1"
-                }
-
-                );
-
-
 
 
             modelBuilder.Entity<ComputerEntity>().HasData(
@@ -137,8 +111,8 @@ namespace Data
                     Memory = "32GB",
                     GraphicsCard = "RTX-4060Ti",
                     Producer = "6253efvdfEr2",
-                    DateOfProduction = DateTime.Parse("2023-12-10"),
-                    SoftwareId = 1
+                    DateOfProduction = DateTime.Parse("2023-12-10")
+
                 },
                 new ComputerEntity()
                 {
@@ -148,41 +122,24 @@ namespace Data
                     Memory = "64GB",
                     GraphicsCard = "RTX-4070",
                     Producer = "MAVIS-PR",
-                    DateOfProduction = DateTime.Parse("2023-12-12"),
-                    SoftwareId = 2
+                    DateOfProduction = DateTime.Parse("2023-12-12")
 
-                }
-              );
-            modelBuilder.Entity<SoftwareLicenseEntity>().HasData(
-                new SoftwareLicenseEntity
-                {
-                    Id = 1,
-                    LicenseKey = "ABAB1212",
-                    ExpirationDate = DateTime.Now.AddYears(1),
-                    LicenseType = "Bussiness",
-                    ComputerId = 123,
-                    SoftwareId = 1
+
                 },
-                new SoftwareLicenseEntity()
+                new ComputerEntity()
                 {
-                    Id = 2,
-                    LicenseKey = "MI45-L",
-                    ExpirationDate = DateTime.Now.AddMonths(6),
-                    LicenseType = "Home",
-                    ComputerId = 223,
-                    SoftwareId = 2,
+                    Id = 22,
+                    Name = "D3MOGA-23",
+                    Processor = "i9-13700K",
+                    Memory = "128GB",
+                    GraphicsCard = "RTX-4060TI",
+                    Producer = "XAMI",
+                    DateOfProduction = DateTime.Parse("2013-12-13")
                 }
 
-                );
-                modelBuilder.Entity<SoftwareEntity>()
-                    .HasMany(s => s.Computers)
-                    .WithMany(c => c.Softwares)
-                    .UsingEntity(j => j
-                    .HasData(
-                        new { SoftwaresId = 1, ComputersId = 123 },
-                        new { SoftwaresId = 2, ComputersId = 223 }
-                            ));
+              ) ;
 
+           
         }
     }
 }

@@ -20,15 +20,19 @@ namespace Laboratorium_3___App.Models
         [HiddenInput]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Proszę podać imię!")]
+        [Required(ErrorMessage = "Proszę podać nazwę!")]
         [Display(Name = "Nazwa")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Proszę podać wersję procesora!")]
         [Display(Name = "Procesor")]
         public string Processor { get; set; }
+        [Required(ErrorMessage = "Proszę podać odpowiednią wartość!")]
         [Display(Name = "Pamięć")]
         public string Memory { get; set; }
+        [Required(ErrorMessage = "Proszę podać pełną nazwę!")]
         [Display(Name = "Karta graficzna")]
         public string GraphicsCard { get; set; }
+        [Required(ErrorMessage = "Proszę podać nazwę producenta!")]
         [Display(Name = "Producent")]
         public string Producer { get; set; }
 
@@ -37,7 +41,6 @@ namespace Laboratorium_3___App.Models
         public DateTime DateOfProduction { get; set; }
         [Display(Name = "Status")]
         public UsageStatus Status { get; set; }
-        public string? SoftwareName { get; set; }
-        public virtual Software Software { get; set; }
+       
     }
 }
