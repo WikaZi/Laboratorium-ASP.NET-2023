@@ -1,9 +1,20 @@
 ﻿@page
 @model EmailModel
 @{
-    ViewData["Title"] = "Manage Email";
+    ViewData["Title"] = "Zmień E-mail";
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
+
+<style>
+
+    
+
+    #change-email-button {
+        background-color: black;
+        color: white;
+    }
+
+</style>
 
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
@@ -34,7 +45,7 @@
                 <label asp-for="Input.NewEmail" class="form-label"></label>
                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
             </div>
-            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Change email</button>
+            <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail" class="w-100 btn btn-lg btn-primary">Zmień email</button>
         </form>
     </div>
 </div>

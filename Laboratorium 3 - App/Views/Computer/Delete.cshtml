@@ -4,21 +4,59 @@
 *@
 @{
 }
-<h2>Czy na pewno chcesz usunąć komputer?</h2>
+<style>
+
+    body {
+        font-family: sans-serif;
+        background-color: #f8f8f8;
+    }
+
+    h2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        position: relative;
+        overflow: hidden;
+        width: 1700px;
+        height: 800px;
+        margin: 40px auto 0;
+        background-color: white;
+    }
+
+  
+    
+   
+
+   
+
+</style>
+
+
+<h2>Czy na pewno chcesz usunąć ten  komputer z listy?</h2>
+<hr />
 <p>Nazwa</p>
-<h3>@Model.Name</h3>
+<h4>@Model.Name</h4>
+<hr />
 <p>Procesor</p>
-<h3>@Model.Processor</h3>
+<h4>@Model.Processor</h4>
+<hr />
 <p>Pamięć</p>
-<h3>@Model.Memory</h3>
+<h4>@Model.Memory</h4>
+<hr />
 <p>Karta Graficzna</p>
-<h3>@Model.GraphicsCard</h3>
+<h4>@Model.GraphicsCard</h4>
+<hr />
 <p>Producent</p>
-<h3>@Model.Producer</h3>
+<h4>@Model.Producer</h4>
+<hr />
 <p>Data Produkcji</p>
-<h3>@Model.DateOfProduction</h3>
+<h4>@Model.DateOfProduction</h4>
+<hr />
 <form asp-action="Delete">
     <input asp-for="Id" />
     <button class="btn btn-danger" type="submit">Tak</button>
-    <a class="btn btn-close" asp-action="Index">Nie</a>
+    <br />
+    <a class="btn btn-cancel" asp-action="Index">Nie </a>
 </form>

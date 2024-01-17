@@ -4,6 +4,44 @@
 *@
 @{
 }
+<style>
+
+    body {
+        font-family: sans-serif;
+        background-color: #f8f8f8;
+    }
+
+    h2 {
+        display: flex;
+        margin-left: 500px;
+        margin-top: 20px;
+    }
+
+    .container {
+        position: relative;
+        overflow: hidden;
+        width: 1700px;
+        height: 700px;
+        margin: 40px auto 0;
+        background-color: white;
+    }
+
+    .btn.btn-primary {
+        background-color: black;
+        margin-left: 560px
+    }
+
+    .a:active {
+        background-color: black;
+    }
+
+
+
+    .form-check-input {
+        background-color: black;
+    }
+
+</style>
 <h2>Edytuj komputer</h2>
 <form asp-controller="Computer" asp-action="Update" method="post">
     <input asp-for="Id"/>
